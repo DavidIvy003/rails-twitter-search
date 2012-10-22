@@ -1,6 +1,4 @@
-<% if @error %>
-  <p class="tweet-error"><%= @error %></p>
-<% elsif not @tweets.empty? %>
+<% if @tweets %>
   <ul id="tweets" class="tweets">
     <% @tweets.each do |tweet| %>
       <li id="<%= tweet.id %>">
@@ -15,10 +13,8 @@
       </li>
     <% end %>
   </ul>
-<% else %>
-  <p class="tweet-error">No tweets matching search</p>
+  <div id='page_navigation' class="pagination"></div>  
+  <script>
+    $(document).ready(paginate());
+  </script>
 <% end %>
-<div id='page_navigation' class="pagination"></div>  
-<script>
-$(document).ready(paginate());
-</script>

@@ -16,14 +16,13 @@ class SearchController < ApplicationController
   def send_query(query, number=30)
   	# sends query to twitter #
     client = TwitterSearch::Client.new('tweetersearch')
-    @tweets =  client.query(:q => query, :rpp => number)
+    @tweets =  client.query(q: query, rpp: number)
   end
 
   private
   def valid(query)
   	# validates input data, if blank #
     if query.blank?
-        @error = 'Please provide input for search'
         return false
     end
     return true
