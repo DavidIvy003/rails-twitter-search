@@ -1,3 +1,5 @@
+require 'twitter_search'
+
 class SearchController < ApplicationController
   def index
   	# receives search parameters and returns html for query #
