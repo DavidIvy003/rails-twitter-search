@@ -36,7 +36,7 @@ class SearchController < ApplicationController
   def validate_and_send_query(query)
   	# sends twitter query if input is valid #
     if valid(query)
-        send_query(query, '10')
+        send_query(query, '30')
     end 
   end
 end

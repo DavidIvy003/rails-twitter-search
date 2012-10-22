@@ -1,9 +1,14 @@
-<div class="center hero-unit">
-  <h1>Welcome to Tweeter Search</h1>
-
-  <h2>
-    Type below to search Twitter, <%= link_to "click here", help_path %> for search syntax 
-  </h2>
-  <%= render 'search/search_form' %>
+<div class="row">
+  <div class="span10">
+    <%= render 'search/search_form' %>
+  </div>
 </div>
-<div id="results"></div>
+
+<div id="results">
+  <div class="center hero-unit">
+    <h1>Welcome to Tweeter Search</h1>
+    <h2>
+      Type above to search Twitter, <%= link_to "click here", help_path %> for search syntax 
+    </h2>
+  </div>
+</div>
