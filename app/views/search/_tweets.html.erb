@@ -1,0 +1,24 @@
+<% if @error %>
+  <p class="tweet-error"><%= @error %></p>
+<% elsif not @tweets.empty? %>
+  <ul id="tweets" class="tweets">
+    <% @tweets.each do |tweet| %>
+      <li id="<%= tweet.id %>">
+        <%= image_tag(tweet.profile_image_url, :alt => tweet.from_user, :class => "gravatar") %>
+        <span class="user">
+          <%= link_to tweet.from_user, '#' %>
+        </span>
+        <span class="content"><%= tweet.text %></span>
+        <span class="timestamp">
+          Posted <%= time_ago_in_words(tweet.created_at) %> ago.
+        </span>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="tweet-error">No tweets matching search</p>
+<% end %>
+<div id='page_navigation' class="pagination"></div>  
+<script>
+$(document).ready(paginate());
+</script>

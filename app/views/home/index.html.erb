@@ -1,0 +1,12 @@
+<div class="center hero-unit">
+  <h1>Welcome to Tweeter Search</h1>
+
+  <h2>
+    Type below to search Twitter, <%= link_to "click here", help_path %> for search options 
+  </h2>
+  <%= form_tag search_index_path, :method => "get", :class => "form-inline", :id => "tweet_search" do %>
+    <%= text_field_tag :search, params[:search], :class => "span4" %>
+    <%= submit_tag "Search", :class => "btn btn-primary", :name => nil %>
+  <% end %>
+</div>
+<div id="results"></div>
