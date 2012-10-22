@@ -1,23 +1,23 @@
-= A Twitter Search website built in Ruby on Rails
+# A Twitter Search website built in Ruby on Rails
 
 Access the Twitter Search API from your Ruby code.
 
-== Demo
+## Demo
 
 View the live demo here:
 <a href="http://smashthemboxes.herokuapp.com/">http://smashthemboxes.herokuapp.com/</a>
 
-== Installation
+## Installation
     git clone https://github.com/DavidIvy003/rails-twitter-search.git
 
-== Requirement
+## Requirement
 App is heavily built off <a href="https://github.com/croaky/twitter-search">dancroak-twitter-search</a>
 rails -> 3.2.8
 ruby -> 1.9.3
 bootstrap-sass -> 2.0.4
 jquery-rails -> 2.0.2
 
-== Search Operators
+## Search Operators
 
 The following operator examples find tweets...
 
@@ -39,10 +39,10 @@ The following operator examples find tweets...
 * Searches are case-insenstive.
 * Searching for a positive attitude :) returns tweets containing the text :), =), :D, and :-)
 
-== Authors
+## Authors
 
 David Ivy
 
-== License
+## License
 
 MIT License, same terms as Ruby.
