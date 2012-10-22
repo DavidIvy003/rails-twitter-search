@@ -41,6 +41,6 @@ xmlhttp.onreadystatechange=function(){
     document.getElementById("results").innerHTML=xmlhttp.responseText;
     }
   }
-xmlhttp.open("GET","/search/preview?utf8=✓&search="+str,true);
+xmlhttp.open("GET","/search/twitter?utf8=✓&search="+str,true);
 xmlhttp.send();
-}
+};

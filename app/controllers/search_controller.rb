@@ -1,29 +1,22 @@
 require 'twitter_search'
 
 class SearchController < ApplicationController
-  def index
-  	# receives search parameters and returns html for query #
-    validate_and_send_query(params[:search])
+  respond_to :html
+  def twitter
+    # receives search parameters and returns html for query #
+    send_query(params[:search]) if valid(params[:search])
 
-    respond_to do |format|
-        format.html # show.html.erb
-        format.json
-        format.js
-    end
+    render partial: "tweets"
   end
 
-  def preview
-  	# receives search parameters and returns ajax data for query #
-    validate_and_send_query(params[:search])
-    render :partial => 'tweets', :content_type => 'text/html'
-  end
-
-  def send_query(query, number)
+  private
+  def send_query(query, number=30)
   	# sends query to twitter #
     client = TwitterSearch::Client.new('tweetersearch')
     @tweets =  client.query(:q => query, :rpp => number)
   end
 
+  private
   def valid(query)
   	# validates input data, if blank #
     if query.blank?
@@ -31,12 +24,5 @@ class SearchController < ApplicationController
         return false
     end
     return true
-  end
-
-  def validate_and_send_query(query)
-  	# sends twitter query if input is valid #
-    if valid(query)
-        send_query(query, '30')
-    end 
   end
 end
