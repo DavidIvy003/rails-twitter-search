@@ -11,16 +11,16 @@ module ApplicationHelper
   end
 
   def create_page_links
-  	if (10 > @tweets.count) then return end 
+  	if (@page == 1 and 10 > @tweets.count )then return end 
   	max = @page + 5
     min = @page - 5 >= 1 ? @page - 5 : 1
 
-  	pages = "<li #{'class="active"' if @page == 1}>#{link_to('prev', search_twitter_path(search: @query, max_id: @max_id, page: @page - 1))}</li>"
+  	pages = "<li #{'class="active"' if @page == 1}>#{link_to('prev', 'javascript:void(0)', onclick: "clickPage('#{@query}', '#{@max_id}', '#{@page - 1}')")}</li>"
 
     (min..max).each do |page|
-      pages += "<li #{'class="active"' if @page == page }>#{link_to page, search_twitter_path(search: @query, max_id: @max_id, page: page)}</li>"
+      pages += "<li #{'class="active"' if @page == page }>#{link_to(page, 'javascript:void(0)', onclick: "clickPage('#{@query}', '#{@max_id}', '#{page}')")}</li>"
     end
-    pages += "<li>#{link_to('next', search_twitter_path(search: @query, max_id: @max_id, page: @page + 1))}</li>"
+    pages += "<li>#{link_to('next', 'javascript:void(0)', onclick: "clickPage('#{@query}', '#{@max_id}', '#{@page + 1}')")}</li>"
     
     pages.html_safe
   end
