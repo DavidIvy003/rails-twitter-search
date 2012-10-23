@@ -11,20 +11,5 @@ class SearchController < ApplicationController
       format.json { render partial: "tweets.html" }
     end
   end
-
-  private
-  def send_query(query, number=30)
-  	# sends query to twitter #
-    client = TwitterSearch::Client.new('tweetersearch')
-    @tweets =  client.query(q: query, rpp: number)
-  end
-
-  private
-  def valid(query)
-  	# validates input data, if blank #
-    if query.blank?
-        return false
-    end
-    return true
-  end
+  include SearchHelper
 end
