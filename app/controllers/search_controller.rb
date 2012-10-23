@@ -1,4 +1,5 @@
 require 'twitter_search'
+require 'search_helper'
 
 class SearchController < ApplicationController
   respond_to :html, :json
@@ -12,5 +13,5 @@ class SearchController < ApplicationController
       format.json { render partial: "tweets.html" }
     end
   end
-  include SearchHelper
+  include ::SearchHelper
 end
