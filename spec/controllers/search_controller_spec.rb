@@ -2,18 +2,10 @@ require 'spec_helper'
 
 describe SearchController do
 
-  describe "GET 'index'" do
+  describe "GET 'twitter'" do
     it "returns http success" do
-      get 'index'
+      get 'twitter'
       response.should be_success
     end
   end
-
-  describe "GET 'preview'" do
-    it "returns http success" do
-      get 'preview'
-      response.should be_success
-    end
-  end
-
 end
