@@ -13,8 +13,13 @@
       </li>
     <% end %>
   </ul>
-  <div id='page_navigation' class="pagination"></div>  
-  <script>
-    $(document).ready(paginate());
-  </script>
+  <div class="pagination">
+    <ul>
+      <li><%= link_to 'prev', search_twitter_path(search: @query, max_id: @max_id, page: @page - 1) %></li>
+      <% (1..10).each do |page| %>
+      <li><%= link_to page, search_twitter_path(search: @query, max_id: @max_id, page: page ) %></li>
+      <% end %>
+      <li><%= link_to 'next', search_twitter_path(search: @query, max_id: @max_id, page: @page + 1 ) %></li>
+    </ul> 
+  </div>
 <% end %>
