@@ -7,7 +7,7 @@ class SearchController < ApplicationController
     @query = params[:search]
     send_query(@query, params[:max_id], params[:page]) if valid(@query)
     @max_id = params[:max_id] || @tweets.first.id
-    @page = Integer(params[:page]) || 1
+    @page = Integer(params[:page] || 1)
 
     respond_to do |format|
       format.html
