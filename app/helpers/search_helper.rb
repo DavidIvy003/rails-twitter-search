@@ -6,12 +6,10 @@ module SearchHelper
     params = { q: query, rpp: number }
     params = params.merge( max_id: max_id ) if max_id
     params = params.merge( page: page ) if page
-    
-    puts params
 
     client = TwitterSearch::Client.new('tweetersearch')
     @tweets =  client.query( params )
-    @max_id = max_id || @tweets.count > 0 ? @tweets.first.id : nil
+    @max_id = max_id || @tweets.first.id if @tweets.count > 0
     @page = Integer( page || 1 )
     return @tweets
   end

@@ -15,13 +15,19 @@ module ApplicationHelper
   	max = @page + 5
     min = @page - 5 >= 1 ? @page - 5 : 1
 
-  	pages = "<li #{'class="active"' if @page == 1}>#{link_to('prev', 'javascript:void(0)', onclick: "clickPage('#{@query}', '#{@max_id}', '#{@page - 1}')")}</li>"
+    link = link_to('prev', 'javascript:void(0)', onclick: "clickPage('#{@query}', '#{@max_id}', '#{@page - 1}')")
+    class_list = "active" if @page == 1
+    pages = [content_tag(:li, link, class: class_list)]
 
     (min..max).each do |page|
-      pages += "<li #{'class="active"' if @page == page }>#{link_to(page, 'javascript:void(0)', onclick: "clickPage('#{@query}', '#{@max_id}', '#{page}')")}</li>"
+      link = link_to(page, 'javascript:void(0)', onclick: "clickPage('#{@query}', '#{@max_id}', '#{page}')")
+      class_list = @page == page ? "active" : ""
+      pages << content_tag(:li, link, class: class_list)
     end
-    pages += "<li>#{link_to('next', 'javascript:void(0)', onclick: "clickPage('#{@query}', '#{@max_id}', '#{@page + 1}')")}</li>"
-    
-    pages.html_safe
+
+    link = link_to('prev', 'javascript:void(0)', onclick: "clickPage('#{@query}', '#{@max_id}', '#{@page + 1}')")
+    pages << content_tag(:li, link)
+
+    pages.join("\n").html_safe
   end
 end
