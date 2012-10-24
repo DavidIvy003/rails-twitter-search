@@ -9,16 +9,6 @@ describe "Homes" do
     it { should have_selector('h1',    text: 'Tweeter Search') }
     it { should have_selector('title',    text: 'Tweeter Search') }
 
-    it 'has a form posting to /search/twitter' do
-      response.should have_selector("form[action=/search/twitter]")
-    end
-
-    %w(instant_search).each do |attr|
-      it "has an address field for #{attr}" do
-        response.should have_selector("input[name*=#{attr}]")
-      end
-    end
-
     it "should not return results" do
         content = ""
         fill_in "search", with: content
