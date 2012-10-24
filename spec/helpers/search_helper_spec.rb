@@ -18,11 +18,11 @@ describe SearchHelper do
 
   describe 'send_query' do
     it 'test query should return 30 results' do
-      helper.send_query('test').count.should == 30
+      helper.send_query('test').count.should == 10
     end
 
     it 'test query w/ supplied number should return correct results' do
-      helper.send_query('test', 100).count.should == 100
+      helper.send_query('test', nil, nil, 100).count.should == 100
     end
 
     it 'randomized result should return 0' do

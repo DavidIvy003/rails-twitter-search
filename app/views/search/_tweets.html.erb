@@ -1,7 +1,7 @@
 <% if @tweets %>
   <ul id="tweets" class="tweets">
     <% @tweets.each do |tweet| %>
-      <li id="<%= tweet.id %>">
+      <li id="<%= tweet.id %>" class="tweet">
         <%= image_tag(tweet.profile_image_url, alt: tweet.from_user, class: "gravatar") %>
         <span class="user">
           <%= link_to tweet.from_user, '#' %>

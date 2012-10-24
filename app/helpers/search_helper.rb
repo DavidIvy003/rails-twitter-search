@@ -9,6 +9,7 @@ module SearchHelper
     @tweets =  client.query( params )
     @max_id = max_id || @tweets.count > 0 ? @tweets.first.id : nil
     @page = Integer(page || 1)
+    return @tweets
   end
 
   def valid(query)
