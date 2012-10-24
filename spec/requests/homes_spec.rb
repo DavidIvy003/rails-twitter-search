@@ -6,14 +6,14 @@ describe "Homes" do
   describe "Home page" do
     before { visit root_path } 
 
-    it { should have_selector('h1',    text: 'Tweeter Search') }
+    it { should have_selector('h1',    text: 'Welcome to Tweeter Search') }
     it { should have_selector('title',    text: 'Tweeter Search') }
 
     it "should not return results" do
         content = ""
         fill_in "search", with: content
         click_button "Search"
-        #current_path.should == root_path
+
         page.should_not have_selector('li.tweet', content: content)
         page.should_not have_selector('div.pagination', content: 'active')
     end
@@ -22,7 +22,7 @@ describe "Homes" do
         content = "mintmarket"
         fill_in "search", with: content
         click_button "Search"
-        #current_path.should == root_path
+
         page.should have_selector('li.tweet', content: 'rgergerg')
         page.should_not have_selector('div.pagination li.active')
     end
@@ -31,10 +31,9 @@ describe "Homes" do
         content = "test"
         fill_in "search", with: content
         click_button "Search"
-        #current_path.should == root_path
+
         page.should have_selector('ul#tweets', content: content)
         page.should have_selector('div.pagination', content: 'active')
-        #response.should render_template('pages/home')
     end
 
   end
