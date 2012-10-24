@@ -4,7 +4,7 @@
       <li id="<%= tweet.id %>" class="tweet">
         <%= image_tag(tweet.profile_image_url, alt: tweet.from_user, class: "gravatar") %>
         <span class="user">
-          <%= link_to tweet.from_user, '#' %>
+          <%= link_to tweet.from_user, "http://twitter.com/#{tweet.from_user}", target: "_blank" %>
         </span>
         <span class="content"><%= tweet.text %></span>
         <span class="timestamp">
